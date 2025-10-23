@@ -1,0 +1,39 @@
+{
+  "cluster": {
+    "nodes": [
+      {
+        "node_id": "node1",
+        "http_port": 8080,
+        "raft_port": 9000,
+        "data_dir": "./data/node1"
+      },
+      {
+        "node_id": "node2",
+        "http_port": 8081,
+        "raft_port": 9001,
+        "data_dir": "./data/node2"
+      },
+      {
+        "node_id": "node3",
+        "http_port": 8082,
+        "raft_port": 9002,
+        "data_dir": "./data/node3"
+      }
+    ]
+  },
+  "database": {
+    "max_history_entries": 1000,
+    "snapshot_interval": "1h",
+    "compaction_enabled": true
+  },
+  "raft": {
+    "election_timeout_ms": 1000,
+    "heartbeat_interval_ms": 500,
+    "snapshot_threshold": 10000
+  },
+  "api": {
+    "read_timeout_seconds": 30,
+    "write_timeout_seconds": 30,
+    "max_request_size_mb": 10
+  }
+}
