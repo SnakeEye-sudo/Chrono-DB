@@ -1,0 +1,76 @@
+{
+  "test_records": [
+    {
+      "key": "user:1001",
+      "value": {
+        "name": "Alice Johnson",
+        "email": "alice@example.com",
+        "status": "active",
+        "balance": 5000
+      },
+      "valid_start": "2024-01-01T00:00:00Z",
+      "valid_end": "9999-12-31T23:59:59Z"
+    },
+    {
+      "key": "user:1002",
+      "value": {
+        "name": "Bob Smith",
+        "email": "bob@example.com",
+        "status": "active",
+        "balance": 3500
+      },
+      "valid_start": "2024-01-15T00:00:00Z",
+      "valid_end": "9999-12-31T23:59:59Z"
+    },
+    {
+      "key": "product:SKU-001",
+      "value": {
+        "name": "Laptop Pro 15",
+        "price": 1299.99,
+        "stock": 50,
+        "category": "electronics"
+      },
+      "valid_start": "2024-02-01T00:00:00Z",
+      "valid_end": "2024-06-30T23:59:59Z"
+    },
+    {
+      "key": "product:SKU-001",
+      "value": {
+        "name": "Laptop Pro 15",
+        "price": 1199.99,
+        "stock": 45,
+        "category": "electronics"
+      },
+      "valid_start": "2024-07-01T00:00:00Z",
+      "valid_end": "9999-12-31T23:59:59Z"
+    },
+    {
+      "key": "config:app_settings",
+      "value": {
+        "theme": "dark",
+        "language": "en",
+        "notifications_enabled": true,
+        "max_connections": 100
+      },
+      "valid_start": "2024-03-01T00:00:00Z",
+      "valid_end": "9999-12-31T23:59:59Z"
+    }
+  ],
+  "test_queries": [
+    {
+      "description": "Query current user data",
+      "endpoint": "/api/v1/query?key=user:1001",
+      "expected": "Returns Alice Johnson's current data"
+    },
+    {
+      "description": "Query historical product price",
+      "endpoint": "/api/v1/temporal?key=product:SKU-001&valid_time=2024-03-15T00:00:00Z",
+      "expected": "Returns price of 1299.99 (old price)"
+    },
+    {
+      "description": "Get full history of product",
+      "endpoint": "/api/v1/history?key=product:SKU-001",
+      "expected": "Returns all historical records with price changes"
+    }
+  ]
+}
